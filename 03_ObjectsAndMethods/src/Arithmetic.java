@@ -25,7 +25,7 @@ public class Arithmetic {
     public int getMinNum(){
         return Math.min(Arithmetic.this.Num1,Arithmetic.this.Num2);
     }
-cd
+
     public static void main(String[] args) {
         Arithmetic calc = new Arithmetic(1, 5);
         System.out.println("Сумма чисел: " + calc.getSumNum());
