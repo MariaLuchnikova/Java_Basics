@@ -2,28 +2,28 @@ import com.jayway.jsonpath.internal.function.numeric.Max;
 import com.jayway.jsonpath.internal.function.numeric.Min;
 
 public class Arithmetic {
-    private int Num1;
-    private int Num2;
+    private int num1;
+    private int num2;
 
-    public Arithmetic (int Num1, int Num2){
-        this.Num1 = Num1;
-        this.Num2 = Num2;
+    public Arithmetic(int num1, int num2) {
+        this.num1 = num1;
+        this.num2 = num2;
     }
 
-    public int getSumNum(){
-      return (Arithmetic.this.Num1 + Arithmetic.this.Num2);
+    public int getSumNum() {
+        return num1 + num2;
     }
 
-    public int getComposNum(){
-        return (Arithmetic.this.Num1 * Arithmetic.this.Num2);
+    public int getComposNum() {
+        return num1 * num2;
     }
 
-    public int getMaxNum(){
-        return Math.max(Arithmetic.this.Num1, Arithmetic.this.Num2);
+    public int getMaxNum() {
+        return Math.max(num1, num2);
     }
 
-    public int getMinNum(){
-        return Math.min(Arithmetic.this.Num1,Arithmetic.this.Num2);
+    public int getMinNum() {
+        return Math.min(num1, num2);
     }
 
     public static void main(String[] args) {
@@ -33,4 +33,4 @@ public class Arithmetic {
         System.out.println("Максимальное из чисел: " + calc.getMaxNum());
         System.out.println("Минимальное из чисел: " + calc.getMinNum());
     }
-    }
+}
