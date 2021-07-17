@@ -7,7 +7,7 @@ public class Printer {
     private int totalKolPage = 0; // общее количество страниц, добавленных в принтер
 
     public Printer(String queue, int kolDoc) {  // конструктор очереди печати списка документов
-        this.queue = this.queue + queue;
+        this.queue += queue;
         this.kolDoc = kolDoc;
     }
 
