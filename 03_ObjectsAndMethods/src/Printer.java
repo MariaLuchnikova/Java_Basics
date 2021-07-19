@@ -2,7 +2,7 @@ import javax.swing.text.Document;
 
 public class Printer {
     private static int count = 0; // начальное значение количества чего-то
-    private final int kolDoc; // переменная, в которой хранится кол-во документов, отправленных на печать
+    private int kolDoc; // переменная, в которой хранится кол-во документов, добавленных в очередь
     private String queue = ""; // переменная, в которой хранится список документов на печать
     private int totalKolPage = 0; // общее количество страниц, добавленных в принтер
 
@@ -54,12 +54,13 @@ public class Printer {
     }
 
     public void print(String listDoc) { // вывод информации в консоль и очистка очереди печати
+        System.out.println("Количество страниц в очереди: " + totalKolPage);
         System.out.println(listDoc);
         if (queue.isEmpty()) {
             System.out.println("Очередь печати отсутствует");
         } else {
             System.out.print(queue);
-            System.out.println("Общее количество страниц: " + getPendingPagesCount());
+            System.out.println("Количество распечатанных страниц: " + getPendingPagesCount());
             clear();
         }
     }
