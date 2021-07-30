@@ -1,10 +1,13 @@
 public class Basket {
 
     private static int count = 0;
+    private static int costAllBasket = 0;
+    private static int countAllProdBasket = 0;
     private String items = "";
     private int totalPrice = 0;
     private int limit;
     private double totalWeight = 0;
+
 
     public Basket() {
         increaseCount(1);
@@ -32,13 +35,36 @@ public class Basket {
         Basket.count = Basket.count + count;
     }
 
-    public void add(String name, int price) { add(name, price, 1); }
+    public static int getCountAllProdBasket() {
+        return countAllProdBasket;
+    }
+
+    public static void increaseCountAllProdBasket(int count) {
+        countAllProdBasket += count;
+    }
+
+    public static int getCostAllBasket() {
+        return costAllBasket;
+    }
+
+    public static void increaseCostAllBasket(int cost) {
+        costAllBasket += cost;
+    }
+
+    public static int getAveragePriceAllBasket() {
+        return costAllBasket / countAllProdBasket;
+    }
+
+    public static int getAverageCostBasket() {
+        return costAllBasket / getCount();
+    }
+
+    public void add(String name, int price) {
+        add(name, price, 1);
+    }
 
     public void add(String name, int price, int count) {
-        boolean error = false;
-        if (contains(name)) {
-            error = true;
-        }
+        boolean error = contains(name);
 
         if (totalPrice + count * price >= limit) {
             error = true;
@@ -50,15 +76,16 @@ public class Basket {
         }
 
         totalPrice = totalPrice + count * price;
+        increaseCountAllProdBasket(count);
+        increaseCostAllBasket(count * price);
 
         items = items + "\n" + name + " - " +
                 count + " шт. - " + price + "\n" + "Общая стоимость товаров: " + totalPrice;
     }
 
-    public void add(String name, int price, int count, double weight)
-    {
-      totalWeight = totalWeight + weight * count;
-      items = "\n" + "Масса всех товаров корзине: " + totalWeight;
+    public void add(String name, int price, int count, double weight) {
+        totalWeight = totalWeight + weight * count;
+        items = "\n" + "Масса всех товаров корзине: " + totalWeight;
     }
 
     public void clear() {
@@ -71,7 +98,9 @@ public class Basket {
         return totalPrice;
     }
 
-    public double getTotalWeght() { return  totalWeight; }
+    public double getTotalWeght() {
+        return totalWeight;
+    }
 
     public boolean contains(String name) {
         return items.contains(name);
