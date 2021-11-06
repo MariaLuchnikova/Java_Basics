@@ -8,7 +8,16 @@ public class TwoDimensionalArray {
         // [X,  , X]
         // [ , X,  ]
         // [X,  , X]
-
-        return new char[0][0];
+        char[][] TwoDimensionalArray = new char[size][size];
+        int lastIndex = size - 1;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (i == j || j == lastIndex - i) TwoDimensionalArray[i][j] = symbol;
+                else TwoDimensionalArray[i][j] = ' ';
+                System.out.print(TwoDimensionalArray[i][j]);
+            }
+            System.out.println();
+        }
+        return TwoDimensionalArray;
     }
 }
