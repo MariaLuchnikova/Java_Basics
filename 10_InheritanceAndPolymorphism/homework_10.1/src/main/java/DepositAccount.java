@@ -1,8 +1,11 @@
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class DepositAccount extends BankAccount {
     private LocalDate lastIncome;
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     @Override
     public double getAmount() {
@@ -25,6 +28,6 @@ public class DepositAccount extends BankAccount {
         if (ChronoUnit.MONTHS.between(lastIncome, LocalDate.now()) >= 1)
             super.take(amountToTake);
         else
-            System.out.println("Запрет выполнения операции списания. С даты последнего пополнения " + lastIncome + " прошло менее одного месяца.");
+            System.out.println("Запрет выполнения операции списания. С даты последнего пополнения " + dateFormatter.format(lastIncome) + " прошло менее одного месяца.");
     }
 }
